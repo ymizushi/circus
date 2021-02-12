@@ -56,18 +56,36 @@ const drawElementRect = (data: number[][], size: Size, max: number) => {
   );
 };
 
+interface Drawable {
+}
+
+
+let objectList:[Drawable] = [];
+
 const Heatmap = ({margin, size, data, max}: Props) => {
   return (
     <g transform={`translate(${margin.left},${margin.top})`}>
-      <rect className="charts__heatmap__rect-element"
+      <rect onClick={handleClick} className="charts__heatmap__rect-element"
         x={0} 
         y={0} 
         width={size.width}
         height={size.height}
       />
-      { drawElementRect(data, size, max) }
+      { drawObject(ojbectList) }
     </g>
   );
+}
+
+function drawObjectList(objectList: [Drawable]) {
+  return objectList.map({
+    
+  })
+}
+
+const handleClick = (event: React.MouseEvent<SVGRectElement, MouseEvent>) => {
+    const svg = event.currentTarget
+    console.log(event.clientX);
+    console.log(event.clientY);
 }
 
 export default Heatmap;
