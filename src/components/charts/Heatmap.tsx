@@ -60,8 +60,6 @@ interface Drawable {
 }
 
 
-let objectList:[Drawable] = [];
-
 const Heatmap = ({margin, size, data, max}: Props) => {
   return (
     <g transform={`translate(${margin.left},${margin.top})`}>
@@ -71,15 +69,8 @@ const Heatmap = ({margin, size, data, max}: Props) => {
         width={size.width}
         height={size.height}
       />
-      { drawObject(ojbectList) }
     </g>
   );
-}
-
-function drawObjectList(objectList: [Drawable]) {
-  return objectList.map({
-    
-  })
 }
 
 const handleClick = (event: React.MouseEvent<SVGRectElement, MouseEvent>) => {

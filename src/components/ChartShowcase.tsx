@@ -3,6 +3,8 @@ import Heatmap from './charts/Heatmap';
 import {range, randomInt} from '../util';
 import '../stylesheets/ChartShowcase.scss';
 
+import {Resistance, VoltageSource, Node} from '../core/parts';
+
 const margin = {top: 0, left: 0};
 const heatmapSize = {width: 50, height: 50};
 const showcaseSize = {width: 50, height: 50};
@@ -15,6 +17,17 @@ const generateHeatmapData = (max: number): number[][] => {
       (x)=> randomInt(max)
     )
   )
+}
+
+
+function generateCircuit() {
+  const c = new Circuit();
+  const r1 = new Resistance("R1", "0", "1", 1000);
+  const v1 = new VoltageSource("V1", "0", "1", 5);
+  c.addPart(r1);
+  c.addPart(v1);
+
+  c.getCircuitTree();
 }
 
 const ChartShowcase = () => {
