@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React  from 'react';
 import '../stylesheets/Circus.scss';
 
 import {Resistance, VoltageSource, Circuit} from '../core/parts';
 
-const margin = {top: 0, left: 0};
-const canvasSize = {width: 50, height: 50};
+const canvasSize = {width: 100, height: 100};
 
 function generateCircuit() {
   const c = new Circuit();
@@ -19,22 +18,41 @@ function generateCircuit() {
 const Canvas = () => {
   return (
     <article className="Canvas">
-      <section className="Canvas_title">
+      <section>
         <h1>Circus - A implementation of Circuit Simulator </h1>
       </section>
       <section>
-        <h1 className="Canvas_elementTitle">Canvas SVG</h1> 
-        <div className="Canvas_elementChart">
+        <h1>Canvas SVG</h1> 
+        <div>
           <svg 
             viewBox={`0 0 ${canvasSize.width} ${canvasSize.height}`}
             xmlns="http://www.w3.org/2000/svg"
             version="1.1"
           >
+            <g transform="scale(0.1 0.1)">
+              <ResistanceShape />
+            </g>
           </svg>
         </div>
       </section>
     </article>
   );
+}
+
+type ResistanceShapeProps = {
+  x: number;
+  y: number;
+  unit: number;
+};
+
+const ResistanceShape = () => {
+  return (
+    <g stroke="black" stroke-width={1} fill="none">
+      <polyline points="0 10, 15 10, 20 0, 30 20, 40 0, 50 20, 60 0, 70 20, 75 10, 85 10" />
+    </g>
+  );
+
+
 }
 
 export default Canvas;
