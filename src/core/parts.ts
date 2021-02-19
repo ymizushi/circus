@@ -3,7 +3,7 @@ export interface Part {
 }
 
 export class Circuit {
-  parts: [Part];
+  parts: Part[];
 
   constructor() {
     this.parts = [];
@@ -23,16 +23,32 @@ export interface Tree {
 
 }
 
-export interface Resistance extends Part {
+export class Resistance implements Part {
   name: string;
   a: string;
   b: string;
   num: number;
+
+  constructor(name: string, a: string, b: string, num: number) {
+    this.name = name;
+    this.a = a;
+    this.b = b;
+    this.num = num;
+
+  }
 }
 
-export interface VoltageSource extends Part {
+export class VoltageSource implements Part {
   name: string;
   a: string;
   b: string;
   num: number;
+
+  constructor(name: string, a: string, b: string, num: number) {
+    this.name = name;
+    this.a = a;
+    this.b = b;
+    this.num = num;
+
+  }
 }

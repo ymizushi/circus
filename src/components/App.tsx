@@ -1,11 +1,11 @@
 import React from 'react';
 import '../stylesheets/App.scss';
-import ChartShowcase from './ChartShowcase';
+import Canvas from './Canvas';
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <ChartShowcase />
+      <Canvas />
     </div>
   );
 }
