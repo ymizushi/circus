@@ -30,7 +30,8 @@ const Canvas = () => {
             version="1.1"
           >
             <g transform="scale(0.1 0.1)">
-              <ResistanceShape />
+              <ResistanceShape x={0} y={0} />
+              <CapacitorShape x={100} y={0}/>
             </g>
           </svg>
         </div>
@@ -42,17 +43,30 @@ const Canvas = () => {
 type ResistanceShapeProps = {
   x: number;
   y: number;
-  unit: number;
 };
 
-const ResistanceShape = () => {
+const ResistanceShape = ({x, y}: ResistanceShapeProps) => {
   return (
-    <g stroke="black" stroke-width={1} fill="none">
+    <g transform={`translate(${x},${y})`} stroke="black" stroke-width={1} fill="none">
       <polyline points="0 10, 15 10, 20 0, 30 20, 40 0, 50 20, 60 0, 70 20, 75 10, 85 10" />
     </g>
   );
+}
 
+type CapacitorShapeProps = {
+  x: number;
+  y: number;
+};
 
+const CapacitorShape = ({x, y}: CapacitorShapeProps) => {
+  return (
+    <g transform={`translate(${x},${y})`} stroke="black" stroke-width={1} fill="none">
+      <polyline points="0 10, 15 10" />
+      <polyline points="25 10, 40 10" />
+      <polyline points="15 0, 15 20" />
+      <polyline points="25 0, 25 20" />
+    </g>
+  );
 }
 
 export default Canvas;
