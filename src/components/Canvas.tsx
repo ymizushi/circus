@@ -1,4 +1,4 @@
-import React  from 'react';
+import React, { useState, useEffect }  from 'react';
 import '../stylesheets/Circus.scss';
 
 import {Resistance, VoltageSource, Circuit} from '../core/parts';
@@ -16,6 +16,27 @@ function generateCircuit() {
 }
 
 const Canvas = () => {
+
+  useEffect(() => {
+    const rect = findDOMNode(this).getBoundingClientRect();
+    console.log(rect.left + window.pageXOffset); // x座標(絶対座標)
+    console.log(rect.top + window.pageYOffset); // y座標(絶対座標)
+  });
+
+  const myRef = React.createRef();
+
+  const [isMouseDown, setIsMouseDown] = useState(false);
+  const [target, setTarget] = useState(null);
+  const [offsetX, setOffsetX] = useState(0);
+  const [offsetY, setOffsetY] = useState(0);
+
+  // const onMouseMove = (e: any) {
+  //   if (isMouseDown == true) {
+  //     target.x.baseVal.value = e.clientX - drag.offsetx;
+  //     target.y.baseVal.value = e.clientY - drag.offsety;
+  //   }
+  // }
+
   return (
     <article className="Canvas">
       <section>
@@ -28,6 +49,7 @@ const Canvas = () => {
             viewBox={`0 0 ${canvasSize.width} ${canvasSize.height}`}
             xmlns="http://www.w3.org/2000/svg"
             version="1.1"
+            ref={myRef}
           >
             <g transform="scale(0.1 0.1)">
               <ResistanceShape x={0} y={0} />
